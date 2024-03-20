@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="Blue_Alice">#EEF2FF</color>
+    <color name="Blue_blue_frost">#A8BFFF</color>
+    <color name="Blue_screen_of_death">#1A3FA3</color>
+    <color name="Blue_steel">#5B75BC</color>
+    <color name="Blue">#4E7CF9</color>
+</resources>

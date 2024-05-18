@@ -1,4 +1,4 @@
-package com.example.melma;
+package com.example.melma.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.melma.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         log = findViewById(R.id.login);
         pass = findViewById(R.id.password);
         singin = findViewById(R.id.singIn);
+        singup = findViewById(R.id.singUp);
         singin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                             // Создание URL для запроса
                             String login = log.getText().toString();
                             String password = pass.getText().toString();
-                            String urlString = "http://localhost:5163/api/ForAllUsers/login?login=" + login + "&password=" + password;
+                            String urlString = "http://194.146.242.26:7777/api/ForAllUsers/login?login=" + login + "&password=" + password;
                             URL url = new URL(urlString);
 
                             // Создание соединения
@@ -106,6 +109,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }).start();
+            }
+        });
+        singup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SingUpActivity.class);
+                startActivity(intent);
             }
         });
     }

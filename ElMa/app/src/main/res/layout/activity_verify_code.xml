@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.VerifyCodeActivity"
+    android:background="@color/white">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:text="Проверка почты"
+        android:textColor="@color/Blue_screen_of_death"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.131" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="359dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:text="На вашу почту выслан код, введите его в данное поле:"
+        android:textAlignment="center"
+        android:textColor="@color/Blue_screen_of_death"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="284dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="56dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1">
+
+        <EditText
+            android:id="@+id/digit1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/digit_box"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="24sp"
+            android:textColor="@color/Blue_screen_of_death"
+            android:textColorHint="@color/Blue_screen_of_death"/>
+
+        <EditText
+            android:id="@+id/digit2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/digit_box"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="24sp"
+            android:textColor="@color/Blue_screen_of_death"
+            android:textColorHint="@color/Blue_screen_of_death"/>
+
+        <EditText
+            android:id="@+id/digit3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/digit_box"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="24sp"
+            android:textColor="@color/Blue_screen_of_death"
+            android:textColorHint="@color/Blue_screen_of_death"/>
+
+        <EditText
+            android:id="@+id/digit4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/digit_box"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="24sp"
+            android:textColor="@color/Blue_screen_of_death"
+            android:textColorHint="@color/Blue_screen_of_death"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/chek"
+        android:layout_width="188dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="@color/Blue_screen_of_death"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:text="Готово"
+        android:textAlignment="center"
+        android:textColor="@color/Blue_Alice"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

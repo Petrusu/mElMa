@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ChangeEmailActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Смена почты"
+        android:textColor="@color/Blue_screen_of_death"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+        android:id="@+id/current_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:hint="Текущий почта"
+        android:backgroundTint="@color/Blue_screen_of_death"
+        android:textColor="@color/Blue_screen_of_death"
+        android:textColorHint="@color/Blue_screen_of_death"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <EditText
+        android:id="@+id/new_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:hint="Новая почта"
+        android:backgroundTint="@color/Blue_screen_of_death"
+        android:textColor="@color/Blue_screen_of_death"
+        android:textColorHint="@color/Blue_screen_of_death"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_email"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <Button
+        android:id="@+id/change_email_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Сменить почты"
+        android:textSize="20sp"
+        android:backgroundTint="@color/Blue_screen_of_death"
+        android:fontFamily="@font/sfnsdisplaythin"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/Blue_Alice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_email"
+        app:layout_constraintWidth_percent="0.8" />
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/Blue_screen_of_death"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:text="Назад"
+        android:textColor="@color/Blue_Alice"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_email_button"
+        app:layout_constraintWidth_percent="0.8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

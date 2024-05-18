@@ -1,10 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookActiviry">
+    tools:context=".activities.BookActiviry"
+    android:background="@color/white">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Поисковая строка -->
+    <LinearLayout
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_edittext_bg"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/Blue_screen_of_death"
+        android:layout_alignParentTop="true">
+
+        <EditText
+            android:id="@+id/searchInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Поиск"
+            android:textSize="16sp"
+            android:fontFamily="@font/sfnsdisplaythin"/>
+
+        <ImageButton
+            android:id="@+id/searchButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button_bg"
+            android:src="@drawable/iconsearch"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/filters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchBar"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageButton
+            android:id="@+id/filterbtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/menuburger" />
+
+    </LinearLayout>
+
+    <!-- Сетка с карточками книг -->
+    <GridView
+        android:id="@+id/bookGrid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomNav"
+        android:layout_below="@+id/filters"
+        android:layout_weight="1"
+        android:horizontalSpacing="8dp"
+        android:numColumns="3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:verticalSpacing="8dp" />
+
+    <!-- Нижнее навигационное меню -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:background="@color/Blue_steel"
+        android:layout_centerHorizontal="true">
+
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/selected_button"
+            android:padding="30dp"
+            android:src="@drawable/iconhome" />
+
+        <ImageButton
+            android:id="@+id/favoritesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginRight="50dp"
+            android:background="@android:color/transparent"
+            android:padding="30dp"
+            android:src="@drawable/iconheart" />
+
+        <ImageButton
+            android:id="@+id/profileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:background="@android:color/transparent"
+            android:padding="30dp"
+            android:src="@drawable/iconuser" />
+    </LinearLayout>
+
+</RelativeLayout>

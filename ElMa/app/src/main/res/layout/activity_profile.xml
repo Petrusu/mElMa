@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ProfileActivity"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/digit_box"
+        android:padding="30dp">
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="123dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/profile_box"
+            android:src="@drawable/iconfontuser2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="20dp"/>
+
+        <TextView
+            android:id="@+id/profileLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:textColor="@color/Blue_screen_of_death"
+            android:fontFamily="@font/sfnsdisplaythin"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.763"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/changeLoginButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="108dp"
+            android:backgroundTint="@color/Blue_screen_of_death"
+            android:fontFamily="@font/sfnsdisplaythin"
+            android:textSize="20sp"
+            android:text="Смена логина"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileLogin"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <Button
+            android:id="@+id/changePasswordButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/Blue_screen_of_death"
+            android:fontFamily="@font/sfnsdisplaythin"
+            android:textSize="20sp"
+            android:text="Смена пароля"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/changeLoginButton"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <Button
+            android:id="@+id/changeEmailButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/Blue_screen_of_death"
+            android:fontFamily="@font/sfnsdisplaythin"
+            android:textSize="20sp"
+            android:text="Смена почты"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/changePasswordButton"
+            app:layout_constraintWidth_percent="0.8" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/Blue_steel"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginRight="50dp"
+            android:background="@android:color/transparent"
+            android:padding="30dp"
+            android:src="@drawable/iconhome" />
+
+        <ImageButton
+            android:id="@+id/favoritesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginRight="50dp"
+            android:background="@android:color/transparent"
+            android:padding="30dp"
+            android:src="@drawable/iconheart" />
+
+        <ImageButton
+            android:id="@+id/profileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:background="@drawable/selected_button"
+            android:padding="30dp"
+            android:src="@drawable/iconuser" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

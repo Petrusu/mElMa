@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:id="@+id/menugroup">
+        <item
+            android:id="@+id/catalog"
+            android:title="Каталог"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/autors"
+            android:title="Авторы"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/editors"
+            android:title="Редакторы"
+            app:showAsAction="never"/>
+        <item
+            android:id="@+id/themes"
+            android:title="Темы"
+            app:showAsAction="never"/>
+    </group>
+
+</menu>

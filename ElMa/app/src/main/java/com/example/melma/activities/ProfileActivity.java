@@ -3,9 +3,11 @@ package com.example.melma.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     String token;
     ImageButton homeBtn, favoriteBtn;
-    Button chgLogin, chgPass, chgEmail;
+    Button chgLogin, chgPass, chgEmail, exitBtn;
     TextView loginText;
 
     @Override
@@ -51,6 +53,15 @@ public class ProfileActivity extends AppCompatActivity {
         chgLogin = findViewById(R.id.changeLoginButton);
         chgPass = findViewById(R.id.changePasswordButton);
         chgEmail = findViewById(R.id.changeEmailButton);
+        exitBtn = findViewById(R.id.ExitButton);
+
+        exitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent exitIntent = new Intent(ProfileActivity.this, MainActivity.class);
+                startActivity(exitIntent);
+            }
+        });
 
         favoriteBtn.setOnClickListener(v -> {
             Intent favIntent = new Intent(ProfileActivity.this, FavoriteActivity.class);
@@ -96,13 +107,13 @@ public class ProfileActivity extends AppCompatActivity {
                     String login = response.body();
                     loginTextView.setText(login);
                 } else {
-                    Log.e("Login", "Response code: " + response.code());
+                    Toast.makeText(getApplicationContext(), response.code(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable throwable) {
-                Log.e("Login", "Request failed", throwable);
+               Toast.makeText(getApplicationContext(),  throwable.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

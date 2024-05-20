@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -25,6 +26,10 @@ import java.net.URL;
 public class SingUpActivity extends AppCompatActivity {
     Button singup;
     EditText email, log, pass, passAgain;
+    ImageView eyeIconPassword, eyeIconPasswordAgain;
+    boolean isPasswordVisible = false;
+    boolean isPasswordAgainVisible = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +46,42 @@ public class SingUpActivity extends AppCompatActivity {
         pass = findViewById(R.id.password);
         passAgain = findViewById(R.id.passwordAgain);
         singup = findViewById(R.id.singUp);
+        eyeIconPassword = findViewById(R.id.eye_icon_password);
+        eyeIconPasswordAgain = findViewById(R.id.eye_icon_password_again);
+
+        // Установка начального цвета фильтра для иконки глаза (серый)
+        eyeIconPassword.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+        eyeIconPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPasswordVisible) {
+                    pass.setInputType(0x00000081); // Скрыть пароль
+                    eyeIconPassword.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+                } else {
+                    pass.setInputType(0x00000091); // Показать пароль
+                    eyeIconPassword.setColorFilter(null);
+                }
+                isPasswordVisible = !isPasswordVisible;
+                pass.setSelection(pass.getText().length());
+            }
+        });
+
+        // Установка начального цвета фильтра для иконки глаза (серый)
+        eyeIconPasswordAgain.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+        eyeIconPasswordAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPasswordAgainVisible) {
+                    passAgain.setInputType(0x00000081); // Скрыть пароль
+                    eyeIconPasswordAgain.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+                } else {
+                    passAgain.setInputType(0x00000091); // Показать пароль
+                    eyeIconPasswordAgain.setColorFilter(null);
+                }
+                isPasswordAgainVisible = !isPasswordAgainVisible;
+                passAgain.setSelection(passAgain.getText().length());
+            }
+        });
 
         singup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,27 +90,18 @@ public class SingUpActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            // Создание URL для запроса
                             String login = log.getText().toString();
                             String password = pass.getText().toString();
                             String Email = email.getText().toString();
 
                             if(pass.getText().toString().equals(passAgain.getText().toString())){
-
                                 String urlString = "http://194.146.242.26:7777/api/ForAllUsers/registration?login=" + login + "&email=" + Email + "&password=" + password;
                                 URL url = new URL(urlString);
-
-                                // Создание соединения
                                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-                                // Установка метода запроса
                                 connection.setRequestMethod("POST");
-
-                                // Получение ответа от сервера
                                 int responseCode = connection.getResponseCode();
 
                                 if (responseCode == HttpURLConnection.HTTP_OK) {
-                                    // Чтение ответа от сервера
                                     InputStream inputStream = connection.getInputStream();
                                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
                                     StringBuilder response = new StringBuilder();
@@ -82,25 +114,21 @@ public class SingUpActivity extends AppCompatActivity {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            // Открытие новой активити
                                             Intent intent = new Intent(SingUpActivity.this, VerifyCodeActivity.class);
                                             startActivity(intent);
                                         }
                                     });
                                 } else {
-                                    // Обработка ошибки
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
                                             Toast.makeText(SingUpActivity.this, "Error: " + responseCode, Toast.LENGTH_SHORT).show();
                                         }
                                     });
-                                    // Закрытие соединения
                                     connection.disconnect();
                                 }
                             }
                             else {
-                                //если пароли не совпадают
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {

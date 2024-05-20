@@ -18,7 +18,6 @@ import java.util.Collections;
 import java.util.List;
 
 import models.Book;
-import models.BookCard;
 
 public class BookGridAdapter extends BaseAdapter {
     private Context context;
@@ -46,30 +45,44 @@ public class BookGridAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.book_grid_item, parent, false);
+            holder = new ViewHolder();
+            holder.imageView = convertView.findViewById(R.id.bookImage);
+            holder.titleTextView = convertView.findViewById(R.id.bookTitle);
+            holder.authorsTextView = convertView.findViewById(R.id.bookAuthors);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
 
         Book currentBook = (Book) getItem(position);
 
-        ImageView imageView = convertView.findViewById(R.id.bookImage);
-        TextView titleTextView = convertView.findViewById(R.id.bookTitle);
-        TextView authorsTextView = convertView.findViewById(R.id.bookAuthors);
-
-        titleTextView.setText(currentBook.getTitle());
+        holder.titleTextView.setText(currentBook.getTitle());
         String authorsText = TextUtils.join(", ", currentBook.getAuthors() != null ? currentBook.getAuthors() : Collections.emptyList());
-        authorsTextView.setText(authorsText);
+        holder.authorsTextView.setText(authorsText);
 
         if (currentBook.getImage() != null) {
             byte[] decodedString = Base64.decode(currentBook.getImage(), Base64.DEFAULT);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            imageView.setImageBitmap(decodedByte);
+            holder.imageView.setImageBitmap(decodedByte);
         } else {
             // Обработка случая, когда изображение отсутствует
-            imageView.setImageResource(R.mipmap.elma); // Или другое заглушечное изображение
+            holder.imageView.setImageResource(R.mipmap.elma); // Или другое заглушечное изображение
         }
 
         return convertView;
     }
-}
 
+    public void updateBooks(List<Book> newBooks) {
+        this.books = newBooks;
+        notifyDataSetChanged();
+    }
+
+    static class ViewHolder {
+        ImageView imageView;
+        TextView titleTextView;
+        TextView authorsTextView;
+    }
+}

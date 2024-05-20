@@ -35,15 +35,18 @@ public class Book {
     @SerializedName("BBK")
     @Expose
     private String bbk;
-    @SerializedName("Author")
+    @SerializedName("AuthorBook")
     @Expose
-    private Object author;
+    private List<String> authorBook;
     @SerializedName("Editor")
     @Expose
-    private Object editor;
-    @SerializedName("ThemeIds")
+    private List<String> editor;
+    @SerializedName("Themes")
     @Expose
-    private List<Object> themeIds;
+    private Object themes;
+    @SerializedName("ThemesName")
+    @Expose
+    private List<String> themesName;
     @SerializedName("Image")
     @Expose
     private String image;
@@ -118,28 +121,35 @@ public class Book {
         this.bbk = bbk;
     }
 
-    public Object getAuthor() {
-        return author;
+    public List<String> getAuthorBook() {
+        return authorBook;
     }
 
-    public void setAuthor(Object author) {
-        this.author = author;
+    public void setAuthorBook(List<String> authorBook) {
+        this.authorBook = authorBook;
     }
 
-    public Object getEditor() {
+    public List<String> getEditor() {
         return editor;
     }
 
-    public void setEditor(Object editor) {
+    public void setEditor(List<String> editor) {
         this.editor = editor;
     }
-
-    public List<Object> getThemeIds() {
-        return themeIds;
+    public Object getThemes() {
+        return themes;
     }
 
-    public void setThemeIds(List<Object> themeIds) {
-        this.themeIds = themeIds;
+    public void setThemes(Object themes) {
+        this.themes = themes;
+    }
+
+    public List<String> getThemesName() {
+        return themesName;
+    }
+
+    public void setThemesName(List<String> themesName) {
+        this.themesName = themesName;
     }
 
     public String getImage() {

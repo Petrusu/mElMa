@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -29,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button singin, singup;
     EditText log, pass;
+    ImageView eyeIcon;
+    boolean isPasswordVisible = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,28 @@ public class MainActivity extends AppCompatActivity {
         pass = findViewById(R.id.password);
         singin = findViewById(R.id.singIn);
         singup = findViewById(R.id.singUp);
+        eyeIcon = findViewById(R.id.eye_icon);
+
+        // Установка начального цвета фильтра для иконки глаза (серый)
+        eyeIcon.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+
+        eyeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isPasswordVisible) {
+                    // Скрыть пароль
+                    pass.setInputType(0x00000081); // Тип для скрытого пароля
+                    eyeIcon.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+                } else {
+                    // Показать пароль
+                    pass.setInputType(0x00000091); // Тип для видимого пароля
+                    eyeIcon.setColorFilter(null); // Убрать фильтр
+                }
+                isPasswordVisible = !isPasswordVisible;
+                pass.setSelection(pass.getText().length()); // Установить курсор в конец текста
+            }
+        });
+
         singin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 }).start();
             }
         });
+
         singup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

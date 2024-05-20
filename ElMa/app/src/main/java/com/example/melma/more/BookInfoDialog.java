@@ -23,6 +23,7 @@ import com.example.melma.activities.FavoriteActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import models.Book;
@@ -211,23 +212,28 @@ public class BookInfoDialog extends Dialog {
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             imageView.setImageBitmap(decodedByte);
         } else {
-            // Обработка случая, когда изображение отсутствует
             imageView.setImageResource(R.mipmap.elma); // Или другое заглушечное изображение
         }
         seriesTextView.setText(book.getSeriesName());
         publisherTextView.setText("Издательство: " + book.getPublisher());
 
-        String authorsText = TextUtils.join(", ", book.getAuthors() != null ? book.getAuthors() : Collections.emptyList());
+        // Преобразуем авторов в строку
+        String authorsText = TextUtils.join(", ", book.getAuthorBook() != null ? book.getAuthorBook() : Collections.emptyList());
         authorsTextView.setText("Авторы: " + authorsText);
 
-        String editorText = TextUtils.join(", ", book.getEditors() != null ? book.getEditors() : Collections.emptyList());
-        editorsTextView.setText("Редакторы: " + editorText);
+        // Преобразуем редакторов в строку
+        String editorsText = TextUtils.join(", ", book.getEditor() != null ? book.getEditor() : Collections.emptyList());
+        editorsTextView.setText("Редакторы: " + editorsText);
+
         placePublicationTextView.setText("Место публикации: " + book.getPlaceOfPublication());
         yearPublicationTextView.setText("Год публикации: " + book.getYearOfPublication());
 
-        String themesText = TextUtils.join(", ", book.getThemeIds() != null ? book.getThemeIds() : Collections.emptyList());
+        // Преобразуем темы в строку
+        String themesText = TextUtils.join(", ", book.getThemesName() != null ? book.getThemesName() : Collections.emptyList());
         themesTextView.setText("Темы: " + themesText);
 
         annotationTextView.setText("Аннотация: " + book.getAnnotation());
     }
+
+
 }

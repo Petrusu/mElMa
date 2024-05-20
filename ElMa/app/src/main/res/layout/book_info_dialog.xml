@@ -30,7 +30,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:layout_width="377dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
@@ -41,61 +41,54 @@
             android:layout_margin="20dp"
             android:scaleType="centerCrop" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/titleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:fontFamily="@font/sfnsdisplaythin"
-                android:textColor="@color/Blue_screen_of_death"
-                android:singleLine="false"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/seriesTextView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/sfnsdisplaythin"
-                android:textColor="@color/Blue_screen_of_death"
-                android:singleLine="false"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/bookPublisher"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/sfnsdisplaythin"
-                android:textColor="@color/Blue_screen_of_death"
-                android:singleLine="false"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/bookAuthors"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/sfnsdisplaythin"
-                android:textColor="@color/Blue_screen_of_death"
-                android:singleLine="false"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/bookEditors"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/sfnsdisplaythin"
-                android:textColor="@color/Blue_screen_of_death"
-                android:singleLine="false"
-                android:textSize="16sp" />
-        </LinearLayout>
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:singleLine="false"
+        android:textColor="@color/Blue_screen_of_death"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/seriesTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:singleLine="false"
+        android:textColor="@color/Blue_screen_of_death"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/bookPublisher"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:textColor="@color/Blue_screen_of_death"
+        android:singleLine="false"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/bookAuthors"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:textColor="@color/Blue_screen_of_death"
+        android:singleLine="false"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/bookEditors"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/sfnsdisplaythin"
+        android:textColor="@color/Blue_screen_of_death"
+        android:singleLine="false"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/place_publication"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -27,6 +28,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
     String token;
     EditText oldPass, newPass, againNewPass;
     Button change, back;
+    ImageView eyeIconCurrent, eyeIconNew, eyeIconRepeat;
+    boolean isCurrentPasswordVisible = false;
+    boolean isNewPasswordVisible = false;
+    boolean isRepeatPasswordVisible = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,60 @@ public class ChangePasswordActivity extends AppCompatActivity {
         change = findViewById(R.id.change_password_button);
         back = findViewById(R.id.back_btn);
 
+        eyeIconCurrent = findViewById(R.id.eye_icon_current);
+        eyeIconNew = findViewById(R.id.eye_icon_new);
+        eyeIconRepeat = findViewById(R.id.eye_icon_repeat);
+        // Установка начального цвета фильтра для иконки глаза (серый)
+        eyeIconCurrent.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+        eyeIconCurrent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isCurrentPasswordVisible) {
+                    oldPass.setInputType(0x00000081); // Скрыть пароль
+                    eyeIconCurrent.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+                } else {
+                    oldPass.setInputType(0x00000091); // Показать пароль
+                    eyeIconCurrent.setColorFilter(null);
+                }
+                isCurrentPasswordVisible = !isCurrentPasswordVisible;
+                oldPass.setSelection(oldPass.getText().length());
+            }
+        });
+
+        // Установка начального цвета фильтра для иконки глаза (серый)
+        eyeIconNew.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+        eyeIconNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isNewPasswordVisible) {
+                    newPass.setInputType(0x00000081); // Скрыть пароль
+                    eyeIconNew.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+                } else {
+                    newPass.setInputType(0x00000091); // Показать пароль
+                    eyeIconNew.setColorFilter(null);
+                }
+                isNewPasswordVisible = !isNewPasswordVisible;
+                newPass.setSelection(newPass.getText().length());
+            }
+        });
+
+        // Установка начального цвета фильтра для иконки глаза (серый)
+        eyeIconRepeat.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+        eyeIconRepeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isRepeatPasswordVisible) {
+                    againNewPass.setInputType(0x00000081); // Скрыть пароль
+                    eyeIconRepeat.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+                } else {
+                    againNewPass.setInputType(0x00000091); // Показать пароль
+                    eyeIconRepeat.setColorFilter(null);
+                }
+                isRepeatPasswordVisible = !isRepeatPasswordVisible;
+                againNewPass.setSelection(againNewPass.getText().length());
+            }
+        });
+
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +113,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     ChangePass();
                 }
                 else {
-                    //если пароли не совпадают
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -63,6 +122,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 }
             }
         });
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,36 +132,29 @@ public class ChangePasswordActivity extends AppCompatActivity {
             }
         });
     }
+
     private void ChangePass() {
-        // Получаем экземпляр Retrofit
         Retrofit retrofit = ElMaAPI.getClient();
-        // Создаем реализацию API интерфейса
         APIInterface api = retrofit.create(APIInterface.class);
         String pass = newPass.getText().toString();
-        // Создаем вызов для изменения пароля
         Call<Void> call = api.ChangePass(pass, "Bearer " + token);
 
-        // Асинхронный вызов
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    // Уведомление пользователя об успешной смене пароля
                     Toast.makeText(getApplicationContext(), "Пароль успешно изменен", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ChangePasswordActivity.this, MainActivity.class);
                     startActivity(intent);
                 } else {
-                    // Уведомление пользователя об ошибке при изменении пароля
                     Toast.makeText(getApplicationContext(), "Ошибка при изменении пароля: " + response.code(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable throwable) {
-                // Уведомление пользователя об ошибке сети
                 Toast.makeText(getApplicationContext(), "Ошибка сети: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 }

@@ -53,37 +53,81 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
-    <EditText
-        android:id="@+id/password"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/passwordLayout"
         android:layout_width="302dp"
         android:layout_height="59dp"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@color/Blue_screen_of_death"
-        android:fontFamily="@font/sfnsdisplaythin"
-        android:hint="Пароль"
-        android:inputType="textPassword"
-        android:textColor="@color/Blue_screen_of_death"
-        android:textColorHint="@color/Blue_screen_of_death"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintTop_toBottomOf="@+id/login">
 
-    <EditText
-        android:id="@+id/passwordAgain"
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="Пароль"
+            android:backgroundTint="@color/Blue_screen_of_death"
+            android:fontFamily="@font/sfnsdisplaythin"
+            android:inputType="textPassword"
+            android:textColor="@color/Blue_screen_of_death"
+            android:textColorHint="@color/Blue_screen_of_death"
+            app:layout_constraintEnd_toStartOf="@+id/eye_icon_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.9"/>
+
+        <ImageView
+            android:id="@+id/eye_icon_password"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/iconeye"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/passwordAgainLayout"
         android:layout_width="302dp"
         android:layout_height="59dp"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@color/Blue_screen_of_death"
-        android:fontFamily="@font/sfnsdisplaythin"
-        android:hint="Повторите пароль"
-        android:inputType="textPassword"
-        android:textColor="@color/Blue_screen_of_death"
-        android:textColorHint="@color/Blue_screen_of_death"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordLayout">
+
+        <EditText
+            android:id="@+id/passwordAgain"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="Повторите пароль"
+            android:backgroundTint="@color/Blue_screen_of_death"
+            android:fontFamily="@font/sfnsdisplaythin"
+            android:inputType="textPassword"
+            android:textColor="@color/Blue_screen_of_death"
+            android:textColorHint="@color/Blue_screen_of_death"
+            app:layout_constraintEnd_toStartOf="@+id/eye_icon_password_again"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent="0.9"/>
+
+        <ImageView
+            android:id="@+id/eye_icon_password_again"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/iconeye"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/singUp"
@@ -98,6 +142,6 @@
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordAgain" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordAgainLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

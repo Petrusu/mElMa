@@ -1,11 +1,10 @@
 package retrofit;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 import models.Author;
 import models.Book;
+import models.BookPageResponse;
 import models.Editor;
 import models.Favorite;
 import models.Theme;
@@ -15,7 +14,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIInterface {
@@ -72,6 +70,11 @@ public interface APIInterface {
     @GET("/api/ForAllUsers/fillthemes")
     Call<ArrayList<Theme>> GetThemes(
 
+    );
+    @GET("/api/ForAllUsers/fillbookonpage")
+    Call<BookPageResponse> getBooks(
+            @Query("page") int page,
+            @Query("size") int size
     );
 
 }
